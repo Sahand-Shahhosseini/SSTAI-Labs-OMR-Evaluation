@@ -4,11 +4,12 @@
 
 - Product: SSTAI OMR / BRB-001
 - Delivery class: Professor / University Evaluation Candidate
-- Package label: `0.1.0-eval.7-current-professor`
+- Release tag: `v0.1.0-eval.7-current-professor`
 - Delivery ZIP: `OMR_Current_Eval7_Professor_Installable.zip`
-- ZIP SHA-256: `e3bd44eab6b9528f219d89dde9afd76aabdba435d7a92e9ca99aa05734e5a98b`
-- Installer: `OMR_Current_Eval7_Setup.exe`
-- Installer SHA-256: `98f17786a210598c85b150a07c102ec1200d9866c698fc8d270985f18f17f720`
+- Published ZIP SHA-256: `e97eb321b15efd3068a9b10b9f3e399cb8b1a2495e33d8b5d82cb792ba347a23`
+- Public release: `https://github.com/Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation/releases/tag/v0.1.0-eval.7-current-professor`
+
+The exact installer hash for each frozen package build is recorded inside the release asset `FINAL_RECEIPT.txt`; the public repository-level checksum file pins the outer delivery ZIP and the independently stable product identities below.
 
 ## Current application identity
 
@@ -22,14 +23,14 @@ This distinction is important: Eval7 is the current `b138c02...` application del
 
 ## Hardened batch processor
 
-- Hardened current-source batch processor SHA-256: `563891a8e5cf0fd7c09ff5f659b2c00b9d164df144407b25b64f935fa221f088`
+- Hardened current-source batch processor SHA-256: `6d456f7b7754c5d9ebfdaeb5037a38effb0cf545860f97d6eceafb009ada4767`
 - Hardened build/regression status: PASS
 - MFP cross-session dedup regression: PASS
 - Windows Unicode path regression (including Persian/CJK/emoji cases): PASS
 
 ## Local Windows verification
 
-The exact Eval7 package passed the following bounded gates on Windows:
+The Eval7 current-app package passed the following bounded gates on Windows:
 
 - installer compilation: PASS;
 - Microsoft Defender installer scan: PASS / no new detections;
@@ -43,7 +44,16 @@ The exact Eval7 package passed the following bounded gates on Windows:
 - cleanup uninstall: PASS;
 - final ZIP hash readback: PASS.
 
-Build evidence was recorded in SSTAI OMR execution run `35074940292`; exact chat-handoff readback/export was recorded in run `35075651480`.
+The final public release asset is reported by GitHub with the same SHA-256 digest `e97eb321b15efd3068a9b10b9f3e399cb8b1a2495e33d8b5d82cb792ba347a23`.
+
+## Public-release contents
+
+The release contains:
+
+- `OMR_Current_Eval7_Professor_Installable.zip`
+- `FINAL_RECEIPT.txt`
+
+The public release itself contains no private engineering source tree.
 
 ## Claim ceiling
 
