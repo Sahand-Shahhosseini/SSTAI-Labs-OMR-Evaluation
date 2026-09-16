@@ -1,0 +1,90 @@
+{
+  "schema": "SSTAI_OMR_PUBLIC_PACKAGE_MANIFEST_V1",
+  "generated_utc": "2026-09-16T19:01:56.5895035Z",
+  "release_tag": "v0.1.0-eval.7-current-professor",
+  "release_id": 389939118,
+  "release_asset_id": 568003218,
+  "package_name": "OMR_Current_Eval7_Professor_Installable.zip",
+  "package_sha256": "e97eb321b15efd3068a9b10b9f3e399cb8b1a2495e33d8b5d82cb792ba347a23",
+  "package_size_bytes": 5136381,
+  "publisher_declared_private_source_commit": "b138c02ac6e611d8178e86b57aff545420403439",
+  "publisher_declared_private_source_tree": "a202de98201e20f08d54d73c759cecc691c5dd23",
+  "producer_build_run": 35098173989,
+  "producer_build_job": 104800725260,
+  "file_count": 13,
+  "files": [
+    {
+      "path": "BATCH_PROCESSOR_HARDENING_RECEIPT.json",
+      "size_bytes": 1807,
+      "sha256": "c5e98e3cd8a4aefbdf70b5b3b7ab71615e0ce0c14f7bd15a497c647bfe33f9a9"
+    },
+    {
+      "path": "DEMO_CLEAN.png",
+      "size_bytes": 8452,
+      "sha256": "218d32f8a915b348057f5772797b9cb2a899549fc26d5114210a763430429bad"
+    },
+    {
+      "path": "DEMO_FORM.pdf",
+      "size_bytes": 6317,
+      "sha256": "ff3eed43416b24702189161dbe35738792893ca86cc75501134049de9f439720"
+    },
+    {
+      "path": "DEMO_REVIEW.png",
+      "size_bytes": 8541,
+      "sha256": "e8dc11e8312deee840a8cfe76090e8917e5744c75511d081bbfaa09ce59ddd23"
+    },
+    {
+      "path": "EVAL7_CURRENT_APP_RECEIPT.json",
+      "size_bytes": 1564,
+      "sha256": "5a7773988ffaa5c4b1f7cee4f18a37a0eafd519badcaa28972fe566767159ed8"
+    },
+    {
+      "path": "EVALUATION_PROTOCOL.md",
+      "size_bytes": 3335,
+      "sha256": "1f4de5849c196c51b0c7a0081f12ee2c6fc08da424ff7613f2b6c8614da866cc"
+    },
+    {
+      "path": "IT_DEPLOYMENT_GUIDE.md",
+      "size_bytes": 4163,
+      "sha256": "7ce03b587b5b0dfe5a00d2fc2b7e7c5dffa1786f10de04ee0e2635e181380e95"
+    },
+    {
+      "path": "KNOWN_LIMITATIONS.md",
+      "size_bytes": 1580,
+      "sha256": "97170d0305ea77aae8cf181a21b924a2038d71d677a0824d867f4494279a4003"
+    },
+    {
+      "path": "OMR_Current_Eval7_Setup.exe",
+      "size_bytes": 5666771,
+      "sha256": "59b08e1d9ff03256ad54e83a52340427dea617d95f5aedf038a7f7603750d7a5",
+      "pe": {
+        "machine": "I386",
+        "machine_hex": "0x014c",
+        "pe_class": "PE32",
+        "authenticode_status": "NotSigned",
+        "signer": null
+      }
+    },
+    {
+      "path": "OPERATOR_QUICKSTART_FA.md",
+      "size_bytes": 4698,
+      "sha256": "ea5bc2bbbd88b86bdf2889508d8a249243b0e736d0b801a1f16bdd174f573519"
+    },
+    {
+      "path": "README_PROFESSOR_FA.txt",
+      "size_bytes": 805,
+      "sha256": "f525c3a8a864ae888bc633575824bd68331e15641f508714b913f4815d189f61"
+    },
+    {
+      "path": "SHA256SUMS.txt",
+      "size_bytes": 1083,
+      "sha256": "2cdaedae699d3238cad7c1375c64ff69c09beb5ee3d6db3b3d86e43776485454"
+    },
+    {
+      "path": "START_HERE_FA.html",
+      "size_bytes": 15290,
+      "sha256": "9f54c9699207442d01cb769cda73f75e86bcac3c2e07d1a4443b68d9573e2b59"
+    }
+  ],
+  "claim_ceiling": "Package-content identity manifest; not independent validation, malware guarantee, OMR accuracy proof, or reproducible-build certificate."
+}
