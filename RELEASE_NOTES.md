@@ -2,9 +2,9 @@
 
 ## SSTAI OMR Eval7 — Current App Professor Installer
 
-Release label: `0.1.0-eval.7-current-professor`
+Release tag: `v0.1.0-eval.7-current-professor`
 
-This evaluation candidate replaces the earlier Eval6 professor handoff for current delivery.
+This evaluation candidate supersedes Eval6 for current professor delivery.
 
 ### What changed
 
@@ -13,6 +13,7 @@ This evaluation candidate replaces the earlier Eval6 professor handoff for curre
 - Rebuilt and hardened the current-source batch processor.
 - Preserved current UI/resources and university evaluation assets.
 - Added exact identity checks proving the installed dashboard is not the old Eval3 dashboard.
+- Published the professor package as a public GitHub Release asset rather than a Gmail executable attachment.
 
 ### Verification
 
@@ -31,25 +32,28 @@ PASS:
 - reinstall;
 - exact installed dashboard and batch-processor hash readback;
 - cleanup uninstall;
-- final ZIP hash readback.
+- final ZIP hash readback;
+- public GitHub Release asset digest recorded as the same frozen ZIP identity.
 
-### Distribution files
+### Distribution
+
+Release page:
+
+`https://github.com/Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation/releases/tag/v0.1.0-eval.7-current-professor`
 
 Official professor-facing package:
 
 `OMR_Current_Eval7_Professor_Installable.zip`
 
-Expected SHA-256:
+SHA-256:
 
-`e3bd44eab6b9528f219d89dde9afd76aabdba435d7a92e9ca99aa05734e5a98b`
+`e97eb321b15efd3068a9b10b9f3e399cb8b1a2495e33d8b5d82cb792ba347a23`
 
-Inside the ZIP, the installer is:
+Direct asset:
 
-`OMR_Current_Eval7_Setup.exe`
+`https://github.com/Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation/releases/download/v0.1.0-eval.7-current-professor/OMR_Current_Eval7_Professor_Installable.zip`
 
-Expected installer SHA-256:
-
-`98f17786a210598c85b150a07c102ec1200d9866c698fc8d270985f18f17f720`
+The release also contains `FINAL_RECEIPT.txt` with build-specific delivery details.
 
 ### Known limitations
 
