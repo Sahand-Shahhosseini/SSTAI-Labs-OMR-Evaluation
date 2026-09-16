@@ -11,12 +11,18 @@ This repository is intentionally separated from the private engineering reposito
 - Evaluation class: professor / university technical evaluation candidate
 - Platform: Windows x64 application payload
 - Current product source identity: `b138c02ac6e611d8178e86b57aff545420403439`
+- Current product tree: `a202de98201e20f08d54d73c759cecc691c5dd23`
 - Current dashboard SHA-256: `5da42d925991c4d600db59f7f2ea395c03e970ff90d4759311046d8c15996431`
-- Hardened current-source batch processor SHA-256: `563891a8e5cf0fd7c09ff5f659b2c00b9d164df144407b25b64f935fa221f088`
-- Installer SHA-256: `98f17786a210598c85b150a07c102ec1200d9866c698fc8d270985f18f17f720`
-- Professor delivery ZIP SHA-256: `e3bd44eab6b9528f219d89dde9afd76aabdba435d7a92e9ca99aa05734e5a98b`
+- Hardened current-source batch processor SHA-256: `6d456f7b7754c5d9ebfdaeb5037a38effb0cf545860f97d6eceafb009ada4767`
+- Published professor-delivery ZIP SHA-256: `e97eb321b15efd3068a9b10b9f3e399cb8b1a2495e33d8b5d82cb792ba347a23`
 
-The binary package should be distributed through **GitHub Releases**, not committed into source history.
+## Official download
+
+**Release:** [SSTAI OMR Eval7 — Current App Professor Evaluation](https://github.com/Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation/releases/tag/v0.1.0-eval.7-current-professor)
+
+**Direct ZIP:** [OMR_Current_Eval7_Professor_Installable.zip](https://github.com/Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation/releases/download/v0.1.0-eval.7-current-professor/OMR_Current_Eval7_Professor_Installable.zip)
+
+The binary package is distributed as a **GitHub Release asset**, not committed into source history.
 
 ## Verification already performed
 
@@ -29,7 +35,8 @@ Bounded verification completed on Windows includes:
 - Persian / CJK / emoji Unicode-path regression;
 - installer compilation;
 - Microsoft Defender scan of installer and installed payload with no new detections;
-- install → dashboard self-test → uninstall → reinstall → exact hash readback → cleanup uninstall.
+- install → dashboard self-test → uninstall → reinstall → exact hash readback → cleanup uninstall;
+- final package publication as a public GitHub Release asset with GitHub-reported SHA-256 digest.
 
 ## Important scope limits
 
@@ -40,6 +47,7 @@ This repository and its releases are **evaluation artifacts**, not a declaration
 - real-student-data authorization;
 - guaranteed physical-camera or physical-paper accuracy;
 - completed university MFP/scanner calibration;
+- trusted Authenticode/code-signing reputation;
 - source-code transfer or open-source licensing.
 
 ## Intellectual property boundary
@@ -48,9 +56,9 @@ The private source code, algorithms, internal architecture, datasets, research m
 
 Public access to this repository does not grant an open-source license. See [`LICENSE.md`](LICENSE.md) and [`SECURITY.md`](SECURITY.md).
 
-## Downloads
+## Integrity
 
-Use the **Releases** section of this repository for official professor-facing downloads. Verify the downloaded file against [`SHA256SUMS.txt`](SHA256SUMS.txt) before use.
+Verify the downloaded release ZIP against [`SHA256SUMS.txt`](SHA256SUMS.txt). The release also contains `FINAL_RECEIPT.txt` as a public build/delivery receipt.
 
 ---
 
