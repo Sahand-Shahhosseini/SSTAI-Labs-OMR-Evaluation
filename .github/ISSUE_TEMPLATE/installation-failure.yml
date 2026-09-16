@@ -1,0 +1,50 @@
+name: Installation failure
+description: Report a non-sensitive installation, launch, uninstall, or reinstall problem for an evaluation release.
+title: "[INSTALL] "
+labels: []
+body:
+  - type: input
+    id: release
+    attributes:
+      label: Release tag
+      placeholder: v0.1.0-eval.7-current-professor
+    validations:
+      required: true
+  - type: input
+    id: sha
+    attributes:
+      label: ZIP SHA-256
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows edition/version/build and architecture
+      placeholder: Windows 11 23H2 build ... x64
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed result / exact error
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed real student data, credentials, private source, and sensitive institutional information.
+          required: true
