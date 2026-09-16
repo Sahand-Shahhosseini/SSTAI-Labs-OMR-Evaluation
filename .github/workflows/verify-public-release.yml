@@ -1,0 +1,62 @@
+name: Verify Public Eval7 Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify documentation and manifest consistency
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXPECTED='e97eb321b15efd3068a9b10b9f3e399cb8b1a2495e33d8b5d82cb792ba347a23'
+          grep -F "$EXPECTED  OMR_Current_Eval7_Professor_Installable.zip" SHA256SUMS.txt
+          grep -F "$EXPECTED" README.md
+          grep -F "$EXPECTED" PROVENANCE.md
+          python - <<'PY'
+          import json
+          expected='e97eb321b15efd3068a9b10b9f3e399cb8b1a2495e33d8b5d82cb792ba347a23'
+          with open('PACKAGE_MANIFEST_EVAL7.json',encoding='utf-8-sig') as f:
+              m=json.load(f)
+          assert m['package_sha256']==expected, (m['package_sha256'], expected)
+          assert m['package_name']=='OMR_Current_Eval7_Professor_Installable.zip'
+          assert m['file_count']==len(m['files'])
+          with open('BUILD_ATTESTATION_EVAL7.json',encoding='utf-8-sig') as f:
+              a=json.load(f)
+          assert a['output_zip_sha256']==expected
+          assert a['attestation_class']=='PUBLISHER_SELF_ATTESTED_WITH_NATIVE_GITHUB_RUN_POINTERS'
+          print('DOCUMENT_MANIFEST_CONSISTENCY=PASS')
+          PY
+
+      - name: Download public release asset and independently recompute SHA-256
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXPECTED='e97eb321b15efd3068a9b10b9f3e399cb8b1a2495e33d8b5d82cb792ba347a23'
+          URL='https://github.com/Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation/releases/download/v0.1.0-eval.7-current-professor/OMR_Current_Eval7_Professor_Installable.zip'
+          curl --fail --location --retry 4 --retry-delay 2 --output eval7.zip "$URL"
+          ACTUAL=$(sha256sum eval7.zip | awk '{print $1}')
+          test "$ACTUAL" = "$EXPECTED"
+          echo "PUBLIC_ASSET_SHA256_RECOMPUTE=PASS $ACTUAL"
+
+      - name: Verify release tag points to the documented public commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXPECTED_TAG_TARGET='74db0baec0ec5523ac49ae84af0443f71d27563a'
+          ACTUAL=$(curl --fail --silent --show-error \
+            -H 'Accept: application/vnd.github+json' \
+            'https://api.github.com/repos/Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation/git/ref/tags/v0.1.0-eval.7-current-professor' \
+            | python -c "import json,sys; print(json.load(sys.stdin)['object']['sha'])")
+          test "$ACTUAL" = "$EXPECTED_TAG_TARGET"
+          echo "PUBLIC_TAG_TARGET=PASS $ACTUAL"
