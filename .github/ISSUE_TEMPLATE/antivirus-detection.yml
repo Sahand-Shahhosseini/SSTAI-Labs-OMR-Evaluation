@@ -1,0 +1,46 @@
+name: Antivirus / SmartScreen observation
+description: Report a public-safe antivirus, EDR, or SmartScreen observation. Do not post sensitive exploit details.
+title: "[SECURITY-OBSERVATION] "
+labels: []
+body:
+  - type: input
+    id: release
+    attributes:
+      label: Release tag
+    validations:
+      required: true
+  - type: input
+    id: sha
+    attributes:
+      label: ZIP SHA-256
+    validations:
+      required: true
+  - type: input
+    id: product
+    attributes:
+      label: Security product and version
+      placeholder: Microsoft Defender / vendor / version
+    validations:
+      required: true
+  - type: input
+    id: detection
+    attributes:
+      label: Exact detection or warning name
+    validations:
+      required: true
+  - type: input
+    id: file
+    attributes:
+      label: Affected filename
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Public-safe reproduction details
+      description: Do not include credentials, private source, real student data, or exploit details.
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: "For sensitive vulnerability details, use the private process in SECURITY.md instead of this public issue."
