@@ -1,0 +1,52 @@
+name: Unicode/path handling failure
+description: Report a reproducible filename or path issue without exposing sensitive local information.
+title: "[UNICODE-PATH] "
+labels: []
+body:
+  - type: input
+    id: release
+    attributes:
+      label: Release tag
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows build / locale
+    validations:
+      required: true
+  - type: input
+    id: pattern
+    attributes:
+      label: Sanitized path pattern
+      placeholder: C:\\Eval7\\فارسی\\آزمون\\ or equivalent redacted pattern
+    validations:
+      required: true
+  - type: dropdown
+    id: class
+    attributes:
+      label: Character/path class
+      options:
+        - Persian/Arabic RTL
+        - CJK
+        - Emoji
+        - Combining characters / normalization
+        - Long path
+        - Spaces / punctuation
+        - Non-ASCII user profile
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Operation and observed failure
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: Paths/usernames are sanitized and no student/credential data is included.
+          required: true
