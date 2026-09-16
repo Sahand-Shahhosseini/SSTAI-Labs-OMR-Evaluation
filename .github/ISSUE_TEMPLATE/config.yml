@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Private vulnerability report
+    url: https://github.com/Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation/security/advisories/new
+    about: Use this for sensitive security issues. Do not post credentials, private source, real student data, or exploit details in a public issue.
