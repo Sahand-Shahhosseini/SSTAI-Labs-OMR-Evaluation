@@ -1,0 +1,25 @@
+{
+  "schema": "SSTAI_OMR_PUBLISHER_BUILD_ATTESTATION_V1",
+  "generated_utc": "2026-09-16T19:01:56.6974268Z",
+  "attestation_class": "PUBLISHER_SELF_ATTESTED_WITH_NATIVE_GITHUB_RUN_POINTERS",
+  "source_repository": "Sahand-Shahhosseini/SSTAI-OMR (private)",
+  "source_commit": "b138c02ac6e611d8178e86b57aff545420403439",
+  "source_tree": "a202de98201e20f08d54d73c759cecc691c5dd23",
+  "build_run": 35098173989,
+  "build_job": 104800725260,
+  "runner": "AENS-CANARY-SSTAI-OMR-01",
+  "host": "SSTAI-DESKTOP-1",
+  "installer_tool": "Inno Setup 6.7.3",
+  "output_zip_sha256": "e97eb321b15efd3068a9b10b9f3e399cb8b1a2495e33d8b5d82cb792ba347a23",
+  "dashboard_sha256": "5da42d925991c4d600db59f7f2ea395c03e970ff90d4759311046d8c15996431",
+  "hardened_batch_processor_sha256": "6d456f7b7754c5d9ebfdaeb5037a38effb0cf545860f97d6eceafb009ada4767",
+  "explicit_log_observations": [
+    "BRB001_BATCH_PROCESSOR_HARDENING_PATCH=APPLIED_WITH_UTF8_PATH_BOUNDARY",
+    "BRB001 MFP cross-session dedup + controlled reprocess integration: PASS",
+    "PASS_WINDOWS_UNICODE_BATCH_CSV_PATHS_TEST_HOOKS",
+    "BRB001_BATCH_PROCESSOR_HARDENING_BUILD=PASS",
+    "OMR_EVAL7_CURRENT_APP_INSTALLER=PASS"
+  ],
+  "independent_reproduction": "NOT_PERFORMED",
+  "source_publicly_reproducible": false
+}
