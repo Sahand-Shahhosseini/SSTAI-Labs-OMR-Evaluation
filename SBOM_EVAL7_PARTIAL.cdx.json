@@ -1,0 +1,149 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:04d5b0a0-3fb5-4c93-96db-941a3d3b96f7",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-09-17T18:03:00Z",
+    "component": {
+      "type": "application",
+      "name": "SSTAI OMR / BRB-001 Eval7 Professor Evaluation Package",
+      "version": "0.1.0-eval.7-current-professor",
+      "bom-ref": "pkg:generic/sstai-omr@0.1.0-eval.7-current-professor",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e97eb321b15efd3068a9b10b9f3e399cb8b1a2495e33d8b5d82cb792ba347a23"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "SSTAI OMR Proprietary Evaluation Terms"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "sstai:sbom:coverage",
+          "value": "PARTIAL_PUBLIC_INVENTORY_NOT_COMPLETE_TRANSITIVE_SBOM"
+        },
+        {
+          "name": "sstai:source:commit",
+          "value": "b138c02ac6e611d8178e86b57aff545420403439"
+        },
+        {
+          "name": "sstai:source:tree",
+          "value": "a202de98201e20f08d54d73c759cecc691c5dd23"
+        },
+        {
+          "name": "sstai:release:asset-id",
+          "value": "568003218"
+        }
+      ]
+    },
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "Inno Setup",
+          "version": "6.7.3",
+          "bom-ref": "tool:inno-setup:6.7.3",
+          "properties": [
+            {
+              "name": "sstai:role",
+              "value": "BUILD_TOOL_INSTALLER_COMPILER_NOT_DECLARED_RUNTIME_LIBRARY"
+            }
+          ]
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "sstai:sbom:claim-ceiling",
+        "value": "This BOM is intentionally incomplete. It is a machine-readable projection of the currently public component inventory and must not be cited as a complete transitive SBOM or vulnerability-clearance attestation."
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "QR-Code-generator",
+      "group": "Project Nayuki",
+      "bom-ref": "git:https://github.com/nayuki/QR-Code-generator@3c6d0b3cefb4e049dc337e82237c9644399716a8",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/nayuki/QR-Code-generator"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sstai:git:commit",
+          "value": "3c6d0b3cefb4e049dc337e82237c9644399716a8"
+        },
+        {
+          "name": "sstai:purpose",
+          "value": "LOCAL_OFFLINE_QR_GENERATION"
+        },
+        {
+          "name": "sstai:observed-linkage",
+          "value": "COMPILED_INTO_WINDOWS_PRODUCT_SHELL"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ZXing-C++",
+      "version": "3.1.1",
+      "bom-ref": "git:https://github.com/zxing-cpp/zxing-cpp@287c85df6f961c8efbfb5ffd736cd9457b8b890e",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/zxing-cpp/zxing-cpp"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sstai:git:commit",
+          "value": "287c85df6f961c8efbfb5ffd736cd9457b8b890e"
+        },
+        {
+          "name": "sstai:purpose",
+          "value": "PHYSICAL_SHEET_IDENTITY_QR_DECODING_NOT_OMR_RECOGNIZER_OR_SCORER"
+        },
+        {
+          "name": "sstai:build:configuration",
+          "value": "READERS_ENABLED_WRITERS_C_API_EXAMPLES_UPSTREAM_TESTS_DISABLED"
+        },
+        {
+          "name": "sstai:observed-linkage",
+          "value": "COMPILED_INTO_WINDOWS_PRODUCT_SHELL"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:generic/sstai-omr@0.1.0-eval.7-current-professor",
+      "dependsOn": [
+        "git:https://github.com/nayuki/QR-Code-generator@3c6d0b3cefb4e049dc337e82237c9644399716a8",
+        "git:https://github.com/zxing-cpp/zxing-cpp@287c85df6f961c8efbfb5ffd736cd9457b8b890e"
+      ]
+    }
+  ]
+}
