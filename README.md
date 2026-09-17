@@ -16,6 +16,8 @@ This repository is intentionally separated from the private engineering reposito
 - Hardened current-source batch processor SHA-256: `6d456f7b7754c5d9ebfdaeb5037a38effb0cf545860f97d6eceafb009ada4767`
 - Published professor-delivery ZIP SHA-256: `e97eb321b15efd3068a9b10b9f3e399cb8b1a2495e33d8b5d82cb792ba347a23`
 
+**Eval7 is frozen as historical evaluation evidence. It must not be silently overwritten. Any byte-changing remediation requires a successor candidate/version.**
+
 ## Download
 
 **Publisher release page:** [SSTAI OMR Eval7 — Current App Professor Evaluation](https://github.com/Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation/releases/tag/v0.1.0-eval.7-current-professor)
@@ -32,7 +34,13 @@ The public repository distinguishes three evidence classes:
 2. **Publisher-executed engineering evidence** — build/regression/install/security checks executed on publisher-controlled Windows infrastructure and referenced by exact run IDs.
 3. **Independent validation** — not yet complete unless explicitly identified as independent.
 
-See [`TEST_REPORT_EVAL7.md`](TEST_REPORT_EVAL7.md) and [`BUILD_PROVENANCE.md`](BUILD_PROVENANCE.md). Repeating `PASS` in documentation is not treated as multiple independent observations.
+See [`TEST_REPORT_EVAL7.md`](TEST_REPORT_EVAL7.md), [`BUILD_PROVENANCE.md`](BUILD_PROVENANCE.md) and the live [`OMR_REMEDIATION_LEDGER.md`](OMR_REMEDIATION_LEDGER.md). Repeating `PASS` in documentation is not treated as multiple independent observations.
+
+## Remediation / open promotion gates
+
+The current audit ledger explicitly separates `CLOSED`, `PARTIAL`, `OPEN` and `BLOCKED_EXTERNAL` obligations. Major gates that remain open include trusted Authenticode signing, signed release lineage, complete SBOM/vulnerability review, independent clean-machine validation, physical paper/camera/MFP accuracy benchmarking, university IT/security acceptance, institutional grading authorization and real-student-data authorization.
+
+Behavioral claims for deduplication and Unicode/path handling are bounded in [`EVAL7_BEHAVIORAL_CONTRACTS.md`](EVAL7_BEHAVIORAL_CONTRACTS.md). A partial machine-readable CycloneDX inventory is available at [`SBOM_EVAL7_PARTIAL.cdx.json`](SBOM_EVAL7_PARTIAL.cdx.json); it is intentionally **not** presented as a complete transitive SBOM or vulnerability-clearance attestation.
 
 ## Accuracy claim ceiling
 
@@ -79,16 +87,21 @@ If the computed hash differs, **do not run the package**. Re-download it from th
 
 ## Documentation
 
+- [`OMR_REMEDIATION_LEDGER.md`](OMR_REMEDIATION_LEDGER.md) — live CLOSED/PARTIAL/OPEN/BLOCKED remediation state
+- [`EVAL7_BEHAVIORAL_CONTRACTS.md`](EVAL7_BEHAVIORAL_CONTRACTS.md) — bounded dedup/Unicode/failure contracts and limitations
 - [`PROVENANCE.md`](PROVENANCE.md) — public-safe provenance and claim ceiling
 - [`TEST_REPORT_EVAL7.md`](TEST_REPORT_EVAL7.md) — producer-executed evidence with exact run references
 - [`BUILD_PROVENANCE.md`](BUILD_PROVENANCE.md) — source/build/artifact linkage and unresolved trust boundaries
+- [`BUILD_ATTESTATION_EVAL7.json`](BUILD_ATTESTATION_EVAL7.json) — publisher machine-readable build attestation
+- [`PACKAGE_MANIFEST_EVAL7.json`](PACKAGE_MANIFEST_EVAL7.json) — release package manifest
+- [`SBOM_EVAL7_PARTIAL.cdx.json`](SBOM_EVAL7_PARTIAL.cdx.json) — partial machine-readable CycloneDX inventory
 - [`INSTALLATION.md`](INSTALLATION.md) — installation, removal and recovery procedure
 - [`COMPATIBILITY.md`](COMPATIBILITY.md) — supported/tested environment boundaries
 - [`PRIVACY.md`](PRIVACY.md) — evaluation data-handling rules
 - [`SUPPORT.md`](SUPPORT.md) — support and release-lifecycle policy
 - [`VERSIONING.md`](VERSIONING.md) — version and supersession model
 - [`RELEASE_POLICY.md`](RELEASE_POLICY.md) — no-overwrite and release-freeze policy
-- [`SBOM_PUBLIC.md`](SBOM_PUBLIC.md) — public component/dependency inventory
+- [`SBOM_PUBLIC.md`](SBOM_PUBLIC.md) — human-readable partial component/dependency inventory
 - [`LICENSE.md`](LICENSE.md) — proprietary evaluation terms
 - [`SECURITY.md`](SECURITY.md) — security reporting and antivirus policy
 
