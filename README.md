@@ -24,7 +24,7 @@ Observed state: **2026-09-19**
 
 - Successor family: **Eval8**
 - Engineering review surface: private `SSTAI-OMR` PR #171
-- Current candidate head: `c4b97f3a1ac3aa55971455a4041df73fd79c7348`
+- Current candidate head: `18000a57cc5cbf739ac02229233d88cbab3d8de9`
 - State: **UNRELEASED / VALIDATION EXECUTING**
 - Eval8 is **not** downloadable from this repository and is **not** represented as GREEN, production-ready, institutionally accepted, or authorized for grading.
 - The current validation lane materializes the exact candidate source outside the volatile self-hosted runner workspace and records source identity, build/test evidence, SBOM/OSV evidence and validation receipts separately from runner-health observations.
