@@ -30,11 +30,23 @@ jobs:
               m=json.load(f)
           assert m['package_sha256']==expected, (m['package_sha256'], expected)
           assert m['package_name']=='OMR_Current_Eval7_Professor_Installable.zip'
+          assert m['package_size_bytes']==5136381
+          assert m['release_id']==389939118
+          assert m['release_asset_id']==568003218
           assert m['file_count']==len(m['files'])
+          assert len({row['path'] for row in m['files']})==m['file_count']
           with open('BUILD_ATTESTATION_EVAL7.json',encoding='utf-8-sig') as f:
               a=json.load(f)
           assert a['output_zip_sha256']==expected
           assert a['attestation_class']=='PUBLISHER_SELF_ATTESTED_WITH_NATIVE_GITHUB_RUN_POINTERS'
+          with open('SBOM_EVAL7_PARTIAL.cdx.json',encoding='utf-8-sig') as f:
+              s=json.load(f)
+          assert s['bomFormat']=='CycloneDX'
+          assert s['specVersion']=='1.5'
+          hashes={x['alg']:x['content'] for x in s['metadata']['component']['hashes']}
+          assert hashes['SHA-256']==expected
+          coverage={p['name']:p['value'] for p in s['metadata']['component'].get('properties',[])}
+          assert coverage['sstai:sbom:coverage']=='PARTIAL_PUBLIC_INVENTORY_NOT_COMPLETE_TRANSITIVE_SBOM'
           print('DOCUMENT_MANIFEST_CONSISTENCY=PASS')
           PY
 
@@ -47,16 +59,68 @@ jobs:
           curl --fail --location --retry 4 --retry-delay 2 --output eval7.zip "$URL"
           ACTUAL=$(sha256sum eval7.zip | awk '{print $1}')
           test "$ACTUAL" = "$EXPECTED"
+          test "$(stat -c %s eval7.zip)" = "5136381"
           echo "PUBLIC_ASSET_SHA256_RECOMPUTE=PASS $ACTUAL"
+
+      - name: Verify ZIP members byte-for-byte against package manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, zipfile
+          from pathlib import PurePosixPath
+
+          with open('PACKAGE_MANIFEST_EVAL7.json',encoding='utf-8-sig') as f:
+              manifest=json.load(f)
+          expected={row['path']:(int(row['size_bytes']),row['sha256'].lower()) for row in manifest['files']}
+          with zipfile.ZipFile('eval7.zip','r') as z:
+              infos=[i for i in z.infolist() if not i.is_dir()]
+              actual_names=[PurePosixPath(i.filename).as_posix() for i in infos]
+              if len(actual_names)!=len(set(actual_names)):
+                  raise SystemExit('duplicate ZIP member path detected')
+              if set(actual_names)!=set(expected):
+                  raise SystemExit(f'ZIP member mismatch missing={sorted(set(expected)-set(actual_names))} extra={sorted(set(actual_names)-set(expected))}')
+              for info in infos:
+                  name=PurePosixPath(info.filename).as_posix()
+                  data=z.read(info)
+                  size,digest=expected[name]
+                  if len(data)!=size:
+                      raise SystemExit(f'size mismatch {name}: {len(data)} != {size}')
+                  got=hashlib.sha256(data).hexdigest()
+                  if got!=digest:
+                      raise SystemExit(f'hash mismatch {name}: {got} != {digest}')
+          print(f'ZIP_MEMBER_MANIFEST=PASS files={len(expected)}')
+          PY
+
+      - name: Verify GitHub release metadata and asset identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error             -H 'Accept: application/vnd.github+json'             'https://api.github.com/repos/Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation/releases/tags/v0.1.0-eval.7-current-professor'             > release.json
+          python - <<'PY'
+          import json
+          expected='e97eb321b15efd3068a9b10b9f3e399cb8b1a2495e33d8b5d82cb792ba347a23'
+          with open('release.json',encoding='utf-8') as f:
+              r=json.load(f)
+          assert r['id']==389939118
+          assert r['tag_name']=='v0.1.0-eval.7-current-professor'
+          assert r['draft'] is False
+          assert r['prerelease'] is True
+          assets={a['name']:a for a in r['assets']}
+          a=assets['OMR_Current_Eval7_Professor_Installable.zip']
+          assert a['id']==568003218
+          assert a['size']==5136381
+          assert a.get('digest')=='sha256:'+expected
+          receipt=assets['FINAL_RECEIPT.txt']
+          assert receipt['id']==568003219
+          print('PUBLIC_RELEASE_METADATA=PASS immutable='+str(r.get('immutable')).lower())
+          PY
 
       - name: Verify release tag points to the documented public commit
         shell: bash
         run: |
           set -euo pipefail
           EXPECTED_TAG_TARGET='74db0baec0ec5523ac49ae84af0443f71d27563a'
-          ACTUAL=$(curl --fail --silent --show-error \
-            -H 'Accept: application/vnd.github+json' \
-            'https://api.github.com/repos/Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation/git/ref/tags/v0.1.0-eval.7-current-professor' \
-            | python -c "import json,sys; print(json.load(sys.stdin)['object']['sha'])")
+          ACTUAL=$(curl --fail --silent --show-error             -H 'Accept: application/vnd.github+json'             'https://api.github.com/repos/Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation/git/ref/tags/v0.1.0-eval.7-current-professor'             | python -c "import json,sys; print(json.load(sys.stdin)['object']['sha'])")
           test "$ACTUAL" = "$EXPECTED_TAG_TARGET"
           echo "PUBLIC_TAG_TARGET=PASS $ACTUAL"
