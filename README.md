@@ -4,7 +4,7 @@ Publisher-hosted public **evaluation-distribution surface** for SSTAI OMR / BRB-
 
 This repository is intentionally separated from the private engineering repositories. It distributes bounded professor/university evaluation artifacts, checksums, public-safe provenance, release notes, test reports and operational documentation. It is **not** an institutional approval surface and is **not** the source-of-truth for private engineering source code.
 
-## Current evaluation candidate
+## Published evaluation package — frozen
 
 **SSTAI OMR — Eval7 Current App Professor Installer**
 
@@ -17,6 +17,20 @@ This repository is intentionally separated from the private engineering reposito
 - Published professor-delivery ZIP SHA-256: `e97eb321b15efd3068a9b10b9f3e399cb8b1a2495e33d8b5d82cb792ba347a23`
 
 **Eval7 is frozen as historical evaluation evidence. It must not be silently overwritten. Any byte-changing remediation requires a successor candidate/version.**
+
+## Successor engineering candidate — not released
+
+Observed state: **2026-09-19**
+
+- Successor family: **Eval8**
+- Engineering review surface: private `SSTAI-OMR` PR #171
+- Current candidate head: `43928085ecda6c71c26f30f04911208a96a5d643`
+- State: **UNRELEASED / VALIDATION EXECUTING**
+- Eval8 is **not** downloadable from this repository and is **not** represented as GREEN, production-ready, institutionally accepted, or authorized for grading.
+- The current validation lane materializes the exact candidate source outside the volatile self-hosted runner workspace and records source identity, build/test evidence, SBOM/OSV evidence and validation receipts separately from runner-health observations.
+- Any future head change invalidates promotion use of earlier-head test results unless the affected scope is explicitly revalidated.
+
+The latest published downloadable package remains frozen Eval7 until a successor candidate passes its required engineering and release gates.
 
 ## Download
 
@@ -77,10 +91,16 @@ Windows CMD:
 certutil -hashfile OMR_Current_Eval7_Professor_Installable.zip SHA256
 ```
 
-Linux / macOS / Git Bash:
+Linux / Git Bash:
 
 ```bash
 sha256sum OMR_Current_Eval7_Professor_Installable.zip
+```
+
+macOS:
+
+```bash
+shasum -a 256 OMR_Current_Eval7_Professor_Installable.zip
 ```
 
 If the computed hash differs, **do not run the package**. Re-download it from the release page and report the mismatch.
