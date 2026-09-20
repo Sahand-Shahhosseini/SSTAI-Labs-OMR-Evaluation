@@ -1,6 +1,6 @@
 # OMR Eval7 Remediation Ledger
 
-Audit date: 2026-09-17
+Audit state refreshed: 2026-09-20
 
 This ledger separates documentation closure, publisher-observed engineering evidence, independent validation, and external/institutional acceptance. A status of `CLOSED` means the stated narrow obligation has evidence in the public distribution surface; it does **not** promote the whole product to independently validated or production-authorized status.
 
@@ -9,7 +9,8 @@ This ledger separates documentation closure, publisher-observed engineering evid
 - Public distribution repository: `Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation`
 - Evaluation tag: `v0.1.0-eval.7-current-professor`
 - Tag target observed during this audit: `74db0baec0ec5523ac49ae84af0443f71d27563a`
-- Public repository main observed during this audit: `7c5118ab01a0262c423ba511ebf82524a41018a4`
+- Public repository verification commit: `4102019affd9fffdb729e5b4115187ccc4a55acb`
+- Latest public verifier run: `35487329493` — SUCCESS
 - Publisher-declared private source commit: `b138c02ac6e611d8178e86b57aff545420403439`
 - Publisher-declared private source tree: `a202de98201e20f08d54d73c759cecc691c5dd23`
 - Public professor ZIP SHA-256: `e97eb321b15efd3068a9b10b9f3e399cb8b1a2495e33d8b5d82cb792ba347a23`
@@ -20,7 +21,7 @@ Eval7 is frozen as historical evaluation evidence. Byte-changing remediation mus
 
 ## Status vocabulary
 
-- `CLOSED` — narrow obligation has read-back evidence.
+- `CLOSED` — the narrow obligation, version/scope, acceptance criterion, evidence pointer, evidence class, and reopen condition are all stated or linked; it does not close neighboring product or institutional obligations.
 - `CLOSED_DOC` — documentation obligation is closed, but the external mechanism it describes may still require independent verification.
 - `PARTIAL` — useful evidence exists, but the obligation is not fully closed.
 - `OPEN` — evidence or implementation is still required.
@@ -32,7 +33,7 @@ Eval7 is frozen as historical evaluation evidence. Byte-changing remediation mus
 |---|---|---|---|
 | Eval7 presented as evaluation candidate rather than stable production | CLOSED | GitHub Release is marked prerelease and repository claim ceiling is explicit. | Keep successor evaluation releases as prereleases until promotion criteria change. |
 | Public release-byte identity | CLOSED | Release asset metadata and published SHA-256 are consistent. | New version requires a new immutable identity/hash. |
-| Independent re-hash of public Release bytes | CLOSED | GitHub-hosted public workflow `Verify Public Eval7 Release`, run `35138191735`, completed successfully by downloading the Release asset and recomputing its SHA-256. | Preserve workflow/run reference with release evidence. |
+| Public Eval7 byte/manifest/receipt verification | CLOSED | GitHub-hosted workflow run `35487329493` SUCCESS: pinned checkout action; public ZIP download + SHA-256/size recompute; every ZIP member path/size/SHA checked against `PACKAGE_MANIFEST_EVAL7.json`; release metadata/asset digest/tag target checked; `FINAL_RECEIPT.txt` independently downloaded/rehashed. Evidence class: GitHub-hosted public distribution-integrity verification. | Reopen on release asset/tag/manifest/receipt drift or verifier failure. This does not validate OMR correctness or Eval8. |
 | PASS wording separated from independent validation | CLOSED | `TEST_REPORT_EVAL7.md` labels producer results as `PRODUCER-OBSERVED PASS`; README separates GitHub-observed, publisher-executed, and independent evidence. | Do not relabel producer evidence as third-party validation. |
 | Checksum verification instructions | CLOSED | README provides PowerShell, CMD and sha256sum instructions and fail-closed behavior on mismatch. | Keep expected digest synchronized with each new release. |
 | Evaluation/review rights clarity | CLOSED | Proprietary evaluation terms allow bounded evaluation, backups, screenshots/log excerpts, black-box/dynamic review, independent benchmark execution and publication of technical findings. | Legal review if institutional contract terms supersede repository terms. |
@@ -57,6 +58,18 @@ Eval7 is frozen as historical evaluation evidence. Byte-changing remediation mus
 | Real-student-data authorization | BLOCKED_EXTERNAL | Evaluation policy excludes real student data without authorization. | Institutional privacy/legal/data-controller approval. |
 | Real phone/browser/camera LAN acceptance | OPEN | Remains an external acceptance gate in the BRB-001 delivery program. | Execute real-device LAN protocol and retain evidence. |
 | Unaided nontechnical operator E2E acceptance | OPEN | Not established by public Eval7 evidence. | Independent operator executes end-to-end workflow without developer intervention. |
+
+## Successor Eval8 validation state
+
+- Candidate: **Eval8 — UNRELEASED**
+- Private engineering PR: `SSTAI-OMR #171`
+- Exact OMR candidate head: `18000a57cc5cbf739ac02229233d88cbab3d8de9`
+- Exact source tree: `66024803d6bb2586a9210918aca473bb0e275c59`
+- Validation class: publisher-controlled Windows engineering validation, separate from runner-health observations and separate from external/institutional acceptance.
+- Current validation workflows materialize the exact OMR commit and exact pinned third-party dependency sources before build.
+- Current secondary validation run: `35487292516`
+- Current release-runner validation run: `35487295216`
+- Promotion rule: no prior-head result is promoted to a changed OMR head. Eval8 remains unreleased until a current-head receipt/readback closes the applicable engineering and installer-lifecycle gates.
 
 ## Authority boundary
 
