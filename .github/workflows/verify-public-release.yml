@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
 
       - name: Verify documentation and manifest consistency
         shell: bash
@@ -61,6 +61,18 @@ jobs:
           test "$ACTUAL" = "$EXPECTED"
           test "$(stat -c %s eval7.zip)" = "5136381"
           echo "PUBLIC_ASSET_SHA256_RECOMPUTE=PASS $ACTUAL"
+
+      - name: Verify published receipt asset independently
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL='https://github.com/Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation/releases/download/v0.1.0-eval.7-current-professor/FINAL_RECEIPT.txt'
+          EXPECTED='cb6f53f4fb0818fa84a27d7c6346b42abe0e56c4ee804f634b6c063f4ae7ab74'
+          curl --fail --location --retry 4 --retry-delay 2 --output final_receipt.txt "$URL"
+          ACTUAL=$(sha256sum final_receipt.txt | awk '{print $1}')
+          test "$ACTUAL" = "$EXPECTED"
+          grep -F 'e97eb321b15efd3068a9b10b9f3e399cb8b1a2495e33d8b5d82cb792ba347a23' final_receipt.txt
+          echo "PUBLIC_RECEIPT_SHA256_RECOMPUTE=PASS $ACTUAL"
 
       - name: Verify ZIP members byte-for-byte against package manifest
         shell: bash
