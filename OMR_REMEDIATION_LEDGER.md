@@ -1,6 +1,6 @@
 # OMR Eval7 Remediation Ledger
 
-Audit state refreshed: 2026-09-20
+Audit state refreshed: 2026-09-20 — post mainline integration
 
 This ledger separates documentation closure, publisher-observed engineering evidence, independent validation, and external/institutional acceptance. A status of `CLOSED` means the stated narrow obligation has evidence in the public distribution surface; it does **not** promote the whole product to independently validated or production-authorized status.
 
@@ -43,6 +43,7 @@ Eval7 is frozen as historical evaluation evidence. Byte-changing remediation mus
 | Raw/structured test evidence public auditability | PARTIAL | `TEST_REPORT_EVAL7.md` exposes run/job/runner and observed gates; not all raw logs/environment evidence are mirrored as immutable public artifacts. | Publish sanitized raw logs/receipts tied to exact artifact SHA and test IDs. |
 | Dedup behavioral contract | CLOSED | Public-safe contract is documented in `EVAL7_BEHAVIORAL_CONTRACTS.md` from the frozen b138 implementation/test evidence. Scope is exact SHA-256 cross-session dedup only. | Add concurrency/crash/rescan/semantic-identity tests before broader claims. |
 | Unicode/path behavioral contract | CLOSED | Public-safe coverage/limits are documented in `EVAL7_BEHAVIORAL_CONTRACTS.md`; synthetic Persian/CJK/emoji-space path coverage is bounded and explicit. | Add NFC/NFD, UNC/network, long-path and locale matrix before broader claims. |
+| Eval8 hardening source integration | PARTIAL | Exact hardening head `18000a57cc5cbf739ac02229233d88cbab3d8de9` passed publisher-controlled Windows x64 execution/read-back in `SSTAI-CHATGPT-SKILLS#35487292516`; PR #171 merged into the product-line parent and controlled union PR #174 merged into private engineering `main` at `1241861442d29a68844265936656d0ddd6b0d039`. Recursive union proof preserved all 642 product blobs exactly and all main-only blobs, producing tree `bec21c7da5cd808580cb7e0ba049f30256edcf7e`. Evidence class: publisher-controlled engineering + Git object read-back, not independent validation. | Complete/read back post-union exact-tree validation and successor installer/release lifecycle before any Eval8 publication claim. |
 | Complete machine-readable SBOM | PARTIAL | `SBOM_EVAL7_PARTIAL.cdx.json` and `SBOM_PUBLIC.md` record a partial public component inventory. | Enumerate all bundled/static/dynamic components, versions, hashes, licenses and vulnerability review. |
 | Authenticode trusted publisher identity | OPEN | Current installer is documented as `NotSigned`. | Acquire trusted code-signing certificate; sign/timestamp installer and relevant binaries; publish certificate fingerprint. |
 | Signed commits / signed release tag | OPEN | Audited public main commit and frozen private source commit were observed unsigned; Eval7 tag is a lightweight commit ref. | Use signed commits/tags for successor release lineage without rewriting Eval7 history. |
