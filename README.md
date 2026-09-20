@@ -20,13 +20,20 @@ This repository is intentionally separated from the private engineering reposito
 
 ## Successor engineering candidate — not released
 
-Observed state: **2026-09-19**
+Observed state: **2026-09-20**
 
 - Successor family: **Eval8**
 - Engineering review surface: private `SSTAI-OMR` PR #171
 - Current candidate head: `18000a57cc5cbf739ac02229233d88cbab3d8de9`
-- State: **UNRELEASED / VALIDATION EXECUTING**
-- Eval8 is **not** downloadable from this repository and is **not** represented as GREEN, production-ready, institutionally accepted, or authorized for grading.
+- State: **UNRELEASED / ENGINEERING SOURCE INTEGRATED TO PRIVATE MAIN / POST-INTEGRATION VALIDATION EXECUTING**
+- Validated hardening PR: private `SSTAI-OMR` PR #171 — merged
+- Controlled mainline integration PR: private `SSTAI-OMR` PR #174 — merged
+- Private engineering `main`: `1241861442d29a68844265936656d0ddd6b0d039`
+- Integrated tree: `bec21c7da5cd808580cb7e0ba049f30256edcf7e`
+- Exact product hardening head `18000a57cc5cbf739ac02229233d88cbab3d8de9` has a successful Windows x64 publisher-controlled evidence run: `SSTAI-CHATGPT-SKILLS#35487292516` (2/2 targeted dedup; 33/33 full product-shell; CycloneDX validation; bounded OSV exact-commit review).
+- Controlled union proof showed all 642 validated product-line blobs preserved exactly, all current-main-only blobs preserved except the intentional README resolution, 729/729 expected union paths, and zero unexpected paths.
+- Post-union exact-tree validation run `SSTAI-CHATGPT-SKILLS#35500421896` is additional confirmation and is still executing at this documented checkpoint.
+- Eval8 is **not** downloadable from this repository and source integration into private `main` is **not** a public release, production authorization, institutional acceptance, physical-accuracy validation, or grading authorization.
 - The current validation lane materializes the exact candidate source outside the volatile self-hosted runner workspace and records source identity, build/test evidence, SBOM/OSV evidence and validation receipts separately from runner-health observations.
 - Any future head change invalidates promotion use of earlier-head test results unless the affected scope is explicitly revalidated.
 
