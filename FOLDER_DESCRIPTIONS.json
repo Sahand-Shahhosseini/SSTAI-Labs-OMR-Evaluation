@@ -1,0 +1,47 @@
+{
+  "schema": "FOLDER_DESCRIPTIONS_V0_1",
+  "repository": "Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation",
+  "generated_at": "2026-09-21",
+  "directories": [
+    {
+      "path": ".github",
+      "description": "GitHub governance, automation, and repository validation configuration.",
+      "description_mode": "README_REQUIRED",
+      "preexisting_readme": false,
+      "readme_present_after_migration": true,
+      "exemption_reason": null
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE",
+      "description": "Container for the `ISSUE_TEMPLATE` artifact family under `.github` in `Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation`; exact semantics, authority, and lifecycle are defined by child artifacts.",
+      "description_mode": "README_REQUIRED",
+      "preexisting_readme": false,
+      "readme_present_after_migration": true,
+      "exemption_reason": null
+    },
+    {
+      "path": ".github/workflows",
+      "description": "GitHub Actions workflow definitions; source configuration is not execution evidence.",
+      "description_mode": "README_REQUIRED",
+      "preexisting_readme": false,
+      "readme_present_after_migration": true,
+      "exemption_reason": null
+    },
+    {
+      "path": "receipts",
+      "description": "Container for the `receipts` artifact family under `repository root` in `Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation`; exact semantics, authority, and lifecycle are defined by child artifacts.",
+      "description_mode": "README_REQUIRED",
+      "preexisting_readme": false,
+      "readme_present_after_migration": true,
+      "exemption_reason": null
+    },
+    {
+      "path": "receipts/v0.1.0-eval.7-current-professor",
+      "description": "Container for the `v0.1.0-eval.7-current-professor` artifact family under `receipts` in `Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation`; exact semantics, authority, and lifecycle are defined by child artifacts.",
+      "description_mode": "README_REQUIRED",
+      "preexisting_readme": false,
+      "readme_present_after_migration": true,
+      "exemption_reason": null
+    }
+  ]
+}
