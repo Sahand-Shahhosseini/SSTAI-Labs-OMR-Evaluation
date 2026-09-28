@@ -1,0 +1,45 @@
+name: AENS Local Runtime Smoke
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: aens-local-runtime-smoke-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  local-runtime-smoke:
+    name: Verify repository-scoped local JIT runner
+    runs-on: [self-hosted, Windows, X64, aens-github-win-v2, repo-sstai-labs-omr-evaluation]
+    timeout-minutes: 5
+    steps:
+      - name: Verify repository and runner identity
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $expectedRepository = 'Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation'
+          if ($env:GITHUB_REPOSITORY -ne $expectedRepository) {
+            throw "AENS_REPOSITORY_IDENTITY_MISMATCH:expected=${expectedRepository}:actual=$env:GITHUB_REPOSITORY"
+          }
+          if ($env:RUNNER_OS -ne 'Windows') {
+            throw "AENS_RUNNER_OS_MISMATCH:expected=Windows:actual=$env:RUNNER_OS"
+          }
+          if ($env:RUNNER_ARCH -ne 'X64') {
+            throw "AENS_RUNNER_ARCH_MISMATCH:expected=X64:actual=$env:RUNNER_ARCH"
+          }
+          if ([string]::IsNullOrWhiteSpace($env:RUNNER_NAME)) {
+            throw 'AENS_RUNNER_NAME_MISSING'
+          }
+          if ($env:RUNNER_NAME -notlike 'AENS-V2-WIN-*') {
+            throw "AENS_RUNNER_NAME_NOT_JIT:actual=$env:RUNNER_NAME"
+          }
+          Write-Host 'AENS_LOCAL_RUNTIME_SMOKE=PASS'
+          Write-Host "AENS_SMOKE_REPOSITORY=$env:GITHUB_REPOSITORY"
+          Write-Host "AENS_SMOKE_RUNNER=$env:RUNNER_NAME"
+          Write-Host "AENS_SMOKE_OS=$env:RUNNER_OS"
+          Write-Host "AENS_SMOKE_ARCH=$env:RUNNER_ARCH"
+          Write-Host "AENS_SMOKE_RUN_ID=$env:GITHUB_RUN_ID"
+          Write-Host "AENS_SMOKE_JOB=$env:GITHUB_JOB"
