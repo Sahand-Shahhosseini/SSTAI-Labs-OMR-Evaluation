@@ -1,0 +1,12 @@
+{
+  "schema_version": "SSTAI_RECOVERY_CONTROL_PUBLIC_BINDING_V0_1",
+  "repository_full_name": "Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation",
+  "visibility": "PUBLIC",
+  "relation": "MANAGED_RECOVERY_SUBJECT",
+  "control_plane": "PRIVATE_RECOVERY_CONTROL_PLANE",
+  "authority_effect": "NONE",
+  "contains_private_topology": false,
+  "contains_secrets": false,
+  "execution_code_present": false,
+  "note": "Public-safe marker only. Recovery policy, host identities, proprietary semantics and operational details remain outside this public repository."
+}
