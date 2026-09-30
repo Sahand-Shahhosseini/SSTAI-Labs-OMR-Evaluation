@@ -1,0 +1,9 @@
+{
+  "schema_version": "SSTAI_ACTIVE_REFLECTIVE_DEFENSE_PUBLIC_MARKER_V0_1",
+  "repository_full_name": "Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation",
+  "relation": "MANAGED_DEFENSE_SUBJECT",
+  "contains_private_topology": false,
+  "contains_secrets": false,
+  "execution_authority": false,
+  "note": "Public-safe marker only. Defensive control, internal topology, proprietary Pure-Math mappings and operational actions remain private."
+}
