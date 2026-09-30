@@ -1,0 +1,20 @@
+{
+  "schema_version": "SSTAI_ACTIVE_REFLECTIVE_DEFENSE_PUBLIC_BINDING_V0_1",
+  "repository_full_name": "Sahand-Shahhosseini/SSTAI-Labs-OMR-Evaluation",
+  "visibility": "PUBLIC",
+  "relation": "MANAGED_DEFENSE_SUBJECT",
+  "authority_effect": "NONE",
+  "private_topology_disclosed": false,
+  "proprietary_semantics_disclosed": false,
+  "execution_code_present": false,
+  "public_policy": [
+    "defensive recovery and resilience only",
+    "no third-party mutation",
+    "no offensive remote action",
+    "no credentials or private topology",
+    "runtime authority remains outside this public repository"
+  ],
+  "allowed_public_statement": "This repository participates in a private owner-controlled defensive recovery and resilience framework.",
+  "offensive_action_authorized": false,
+  "fail_closed": true
+}
